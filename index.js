@@ -4,37 +4,38 @@ describe('User class', () => {
 
 const me = new User('Andrés Alejandro Nuñez Tinajero',['Karina Tinajero Rosario', 'Andrés Nuñez Betancourt'],[])
 
-const mom = new User('Karina Tinajero Rosario',['Aida Rosario Rosario', 'Andrés Tinajero Castro'], me)
+class User {
 
-const dad = new User('Andrés Nuñez Betancourt',['Basilia Betancourt', 'Andrés Nuñez'], me)	
+    constructor(name,parents,children){
+    
+    this.name = name;
+    this.parents = parents;
+    this.children = children;
+    
+    }
+    
+    childOf() {
+    
+      return `${this.name} is a child of ${this.parents[0]} and ${this.parents[1]}`
+      
+    }
+    
+    parentOf(){
+      return `${this.name} is a parent to  ${this.children.name} `
+    
+    }
+    
 
-	test('my name?', () => { 
-		expect(me.name).toBe("Andrés Alejandro Nuñez Tinajero"); 
-	})
+    }
 
-    test('has two parents?', () => { 
-		expect(me.parents.length).toBe(2); 
-	})
+    module.exports = User
 
-	test('has no children?', () => { 
-		expect(me.children).toBeNull; 
-	})
-
-    test('no more than two parents?', () => { 
-		expect(mom.parents.length).toBeLessThan(3); 
-	})
-
-    test('parent to Andrés Alejandro?', () => { 
-		expect(mom.parentOf()).toContain(me.name);
-        expect(dad.parentOf()).toContain(me.name); 
-	})
-
-
-
-    test('has a parent named Andrés?', () => { 
-		expect(mom.childOf()).toContain("Andrés"); 
-        expect(me.childOf()).toContain("Andrés"); 
-        expect(dad.childOf()).toContain("Andrés"); 
-	})
-
-})
+ console.log(me, mom, dad)
+ console.log(me.childOf())
+ console.log(dad.childOf(),"and" )
+ console.log(mom.parentOf())
+	
+console.log(me, mom, dad)	
+console.log(me.childOf())
+console.log(dad.childOf(),"and" )
+console.log(mom.parentOf())
